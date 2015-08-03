@@ -1,5 +1,9 @@
 #include <math.h>
 
+int heapItems = 0;
+int heapSize = 2;
+int minHeap[heapSize];
+
 int lchild(int x){
   return 2 * x + 1;
 }
@@ -12,25 +16,18 @@ int parent(int x){
   return floor(x / 2);
 }
 
-struct minHeap {
-  int heapItems = 0;
-  int heapSize = 2;
-  int data[heapSize];
-};
-
-int upHeap(int x, struct minHeap *ourHeap){ //TODO build upHeap
+int upHeap(int x){ //TODO build upHeap
   return 0;
 }
 
 int main (int argc, char *argv[]){
-  struct minHeap testHeap;
-  
-  add(33, &testHeap);
-  
+  heapItems = 0;
+  heapSize = 2;
+
   exit(0);
 }
 
-int add(int value, minHeap *h){
+int add(int value){
   if( heapItems == 0) { // We're empty
     minHeap[1] = value;
     return 0;
@@ -39,7 +36,7 @@ int add(int value, minHeap *h){
     //TODO
     return 0;
   }
-  
+
   // default case, add to end and upheap
   ++heapItems;
   minHeap[heapItems] = value;
