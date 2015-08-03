@@ -1,7 +1,7 @@
 #include <math.h>
 
 int heapItems = 0;
-int heapSize = 2;
+int heapSize = 16;
 int minHeap[heapSize];
 
 int lchild(int x){
@@ -17,12 +17,28 @@ int parent(int x){
 }
 
 int upHeap(int x){ //TODO build upHeap
+  if(x == 1) {
+    return 0; // if we are at the root, stop
+  }
+  
+  if(minHeap[parent(x)] =< minHeap[x]) {
+    return 0; //already satisfy heap-invariant for min-heap
+  }
+    
+  // swap x and parent(x)
+  int temp = minHeap[x];
+  minHeap[x] = minHeap[parent(x)];
+  minHeap[parent(x)] = temp;
+  
+  upHeap(parent(x));
+
   return 0;
 }
 
 int main (int argc, char *argv[]){
-  heapItems = 0;
-  heapSize = 2;
+  
+  add(33);
+  add(27);
 
   exit(0);
 }
@@ -30,11 +46,11 @@ int main (int argc, char *argv[]){
 int add(int value){
   if( heapItems == 0) { // We're empty
     minHeap[1] = value;
+    ++heapItems;
     return 0;
   }
   if( (heapItems + 1) == heapSize ) { // We're full
-    //TODO
-    return 0;
+    //TODO grow array
   }
 
   // default case, add to end and upheap
