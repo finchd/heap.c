@@ -3,16 +3,16 @@
 
 
 int lchild(int x){
-  return 2 * x + 1;
+  return 2 * x;
 }
 
 int rchild(int x){
-  return 2 * x + 2;
+  return 2 * x + 1;
 }
 
 int parent(int x){
   int y = x/2;
-  printf("%i\n\n", y);
+  // printf("%i\n\n", y);
   return y;
 }
 
@@ -60,6 +60,10 @@ int main (int argc, char *argv[]){
   
   add(33);
   add(27);
+  add(57);
+  add(67);
+  add(17);
+  add(87);
 
   printf("[");
   int i = 1;
