@@ -1,5 +1,6 @@
-#include <math.h>
 #include <stdlib.h>
+#include <stdio.h>
+
 
 int lchild(int x){
   return 2 * x + 1;
@@ -10,8 +11,11 @@ int rchild(int x){
 }
 
 int parent(int x){
-  return floor(x / 2);
+  int y = x/2;
+  printf("%i\n\n", y);
+  return y;
 }
+
 
 int main (int argc, char *argv[]){
   int heapItems = 0;
@@ -23,7 +27,7 @@ int main (int argc, char *argv[]){
       return 0; // if we are at the root, stop
     }
     
-    if(minHeap[parent(x)] =< minHeap[x]) {
+    if(minHeap[parent(x)] <= minHeap[x]) {
       return 0; //already satisfy heap-invariant for min-heap
     }
       
@@ -56,6 +60,13 @@ int main (int argc, char *argv[]){
   
   add(33);
   add(27);
+
+  printf("[");
+  int i = 1;
+  for(; i <= heapItems; ++i) {
+    printf("%d, ", minHeap[i]);
+  }
+  printf("]\n\n");
 
   exit(0);
 }
